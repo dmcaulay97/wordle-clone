@@ -36,6 +36,9 @@ const Keyboard = () => {
                 </div>
             </div>
             <div className="keyboard-row">
+                <div className="key half">
+
+                </div>
                 <div className="key">
                     A
                 </div>
@@ -63,7 +66,9 @@ const Keyboard = () => {
                 <div className="key">
                     L
                 </div>
+                <div className="key half">
 
+                </div>
             </div>
             <div className="keyboard-row">
                 <div className="key wide">

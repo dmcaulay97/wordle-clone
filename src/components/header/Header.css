@@ -7,6 +7,7 @@ header {
     align-items: center;
     padding: 0px 16px;
     border-bottom: 1px #3a3a3c solid;
+    box-sizing: border-box;
 }
 
 

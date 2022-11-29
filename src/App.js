@@ -7,8 +7,10 @@ function App() {
 
     <div className="App">
       <Header />
-      <Board />
-      <Keyboard />
+      <div className='game-area'>
+        <Board />
+        <Keyboard />
+      </div>
     </div>
   );
 }
