@@ -1,0 +1,32 @@
+.board-container {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+
+.board {
+    height: 420px;
+    width: 350px;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0px;
+}
+
+.row {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    margin: 3px 0px;
+}
+
+.box {
+    height: 58px;
+    aspect-ratio: 1;
+    border: 2px solid #3a3a3c;
+    margin: 0px 3px;
+}
