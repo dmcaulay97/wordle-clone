@@ -1,3 +1,13 @@
+:root {
+    --game-area-height: 66px;
+}
+
+@media (max-width: 415px) {
+    :root {
+        --game-area-height: 41px;
+    }
+}
+
 .App {
     height: 100%;
     background-color: black;
@@ -8,7 +18,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: calc(100% - 41px);
+    height: calc(100% - var(--game-area-height));
     margin: 0 auto;
     width: 100%;
     max-width: 500px;

@@ -7,21 +7,11 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin: 0 8px
-}
-
-.keyboard-row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    margin: 3px 0px;
-    width: 100%;
+    margin: 0 8px;
 }
 
 .key {
     height: 58px;
-    /* width: 43px; */
     background-color: #818384;
     border-radius: 4px;
     margin: 0px 3px;
@@ -33,6 +23,23 @@
     flex: 1;
 }
 
+.key:hover {
+    cursor: pointer;
+}
+
+.keyboard-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 3px 0px;
+    width: 100%;
+}
+
+.keyboard:hover {
+    cursor: pointer;
+}
+
 .wide {
     flex: 1.5;
 }
@@ -40,4 +47,8 @@
 .half {
     flex: .5;
     background-color: black;
+}
+
+.back {
+    font-size: 25px;
 }

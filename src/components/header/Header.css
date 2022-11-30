@@ -1,5 +1,5 @@
 header {
-    height: 41px;
+    height: 66px;
     background-color: #121213;
     margin: 0;
     display: flex;
@@ -35,4 +35,10 @@ header {
 
 .button {
     padding: 0 2px;
+}
+
+@media (max-width: 415px) {
+    header {
+        height: 41px;
+    }
 }
