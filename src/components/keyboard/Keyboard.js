@@ -2,7 +2,7 @@ import "./Keyboard.css"
 import { BsBackspace } from 'react-icons/bs'
 import Key from "../key/Key"
 
-const Keyboard = () => {
+const Keyboard = ({ type }) => {
     const firstRow = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"]
     const secondRow = ["A", "S", "D", "F", "G", "H", "J", "K", "L"]
     const thirdRow = ["Z", "X", "C", "V", "B", "N", "M"]
@@ -11,13 +11,13 @@ const Keyboard = () => {
     return (
         <div className="keyboard">
             <div className="keyboard-row">
-                {firstRow.map((letter, index) => (<Key key={index} letter={letter} />))}
+                {firstRow.map((letter, index) => (<Key key={index} letter={letter} type={type} />))}
             </div>
             <div className="keyboard-row">
                 <div className="key half">
                 </div>
 
-                {secondRow.map((letter, index) => (<Key key={index} letter={letter} />))}
+                {secondRow.map((letter, index) => (<Key key={index} letter={letter} type={type} />))}
 
                 <div className="key half">
                 </div>
@@ -27,7 +27,7 @@ const Keyboard = () => {
                     Enter
                 </div>
 
-                {thirdRow.map((letter, index) => (<Key key={index} letter={letter} />))}
+                {thirdRow.map((letter, index) => (<Key key={index} letter={letter} type={type} />))}
 
                 <div className="key wide back">
                     <BsBackspace />

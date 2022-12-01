@@ -1,13 +1,9 @@
 import "./Key.css"
 
-const Key = ({ letter }) => {
-
-    const type = () => {
-        console.log(letter)
-    }
+const Key = ({ letter, type }) => {
 
     return (
-        <div className="key" onClick={type}>
+        <div className="key" onClick={() => { type(letter) }}>
             {letter}
         </div>
     )
