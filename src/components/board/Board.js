@@ -11,8 +11,8 @@ const Board = ({ boardState }) => {
                             <div key={index} className="row">
                                 {row.map((box, index) => {
                                     return (
-                                        <div key={index} className="box">
-                                            {box}
+                                        <div key={index} className="box" style={{ backgroundColor: box.color }}>
+                                            {box.letter}
                                         </div>
                                     )
                                 })}
