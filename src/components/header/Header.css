@@ -23,6 +23,9 @@ header {
     flex-grow: 5;
     font-size: 35px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding-left: 65px;
 }
 
 .buttons {
@@ -40,5 +43,12 @@ header {
 @media (max-width: 415px) {
     header {
         height: 41px;
+    }
+}
+
+@media (max-width: 767px) {
+    .title {
+        justify-content: left;
+        padding-left: 0px;
     }
 }
