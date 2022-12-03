@@ -5,7 +5,7 @@ import { AiFillQuestionCircle } from 'react-icons/ai'
 import { ImStatsBars } from 'react-icons/im'
 import { VscSettingsGear } from 'react-icons/vsc'
 
-const Header = () => {
+const Header = ({ changeModal, disableGraph }) => {
     return (
         <IconContext.Provider value={{ color: "#ffffff" }} >
             <header>
@@ -19,7 +19,12 @@ const Header = () => {
                     <div className="button">
                         <AiFillQuestionCircle />
                     </div>
-                    <div className="button">
+                    <div className="button" onClick={
+                        () => {
+                            if (!disableGraph) {
+                                changeModal("flex")
+                            }
+                        }}>
                         <ImStatsBars />
                     </div>
                     <div className="button">

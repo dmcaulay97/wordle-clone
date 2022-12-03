@@ -2,6 +2,8 @@ import './App.css';
 import Header from './components/header/Header';
 import Board from './components/board/Board'
 import Keyboard from './components/keyboard/Keyboard'
+import Modal from './components/modal/Modal';
+import words from 'an-array-of-english-words'
 import { useState, useEffect } from 'react'
 
 function App() {
@@ -27,9 +29,24 @@ function App() {
 
 	const [currentBeginning, setCurrentBeginning] = useState(0)
 
-	const [word, setWord] = useState("TITII")
+	const [word, setWord] = useState("TITAN")
 
 	const [disableKeyboard, setDisableKeyboard] = useState(false)
+
+	const [displayModal, setDisplayModal] = useState("none")
+
+	const [modalMessage, setModalMessage] = useState("")
+
+	const changeModal = (display) => {
+		setDisplayModal(display)
+	}
+
+
+	const fiveLetterWords = words.filter(word => word.length === 5)
+
+	useEffect(() => {
+		setWord(fiveLetterWords[Math.floor(Math.random() * fiveLetterWords.length)].toUpperCase())
+	}, [])
 
 	const type = (letter) => {
 		if (!disableKeyboard) {
@@ -59,19 +76,27 @@ function App() {
 	}
 
 	const doubleCheck = (word) => {
-		let doubles = []
+		// let doubles = []
+
+		// for (let i = 0; i < word.length; i++) {
+		// 	for (let j = i + 1; j < word.length; j++) {
+		// 		if (word[i] === word[j]) {
+		// 			if (!doubles.includes(word[i])) {
+		// 				doubles.push(word[i])
+		// 			}
+		// 		}
+		// 	}
+		// }
+
+		let letters = []
 
 		for (let i = 0; i < word.length; i++) {
-			for (let j = i + 1; j < word.length; j++) {
-				if (word[i] === word[j]) {
-					if (!doubles.includes(word[i])) {
-						doubles.push(word[i])
-					}
-				}
+			if (!letters.includes(word[i])) {
+				letters.push(word[i])
 			}
 		}
 
-		doubles = doubles.map((letter) => {
+		const doubles = letters.map((letter) => {
 			return { letter: letter, count: 0 }
 		})
 
@@ -82,12 +107,12 @@ function App() {
 				}
 			}
 		})
-
 		return doubles
 	}
 
 
 	const checkWord = () => {
+		console.log(word)
 		const doubles = doubleCheck(word)
 		const currentEnding = currentBeginning + 5
 
@@ -101,30 +126,30 @@ function App() {
 				const guessLetter = boardState[row][i].letter
 				const newBoardState = [...boardState]
 
-				let isDouble = false
+				// let isDouble = false
 				let doubleArrayIndex = 0
 				doubles.forEach((letterObj, index) => {
 					if (guessLetter === letterObj.letter) {
-						isDouble = true
+						// isDouble = true
 						doubleArrayIndex = index
 					}
 				})
 
 				if (guessLetter === word[i]) {
 					exclude.push(i)
-					if (isDouble) {
-						if (doubles[doubleArrayIndex].count > 0) {
-							newBoardState[row][i].color = "#538d4e"
-							setBoardState(newBoardState)
-							doubles[doubleArrayIndex].count -= 1
-						} else {
-							newBoardState[row][i].color = "#3a3a3c"
-							setBoardState(newBoardState)
-						}
-					} else {
+					// if (isDouble) {
+					if (doubles[doubleArrayIndex].count > 0) {
 						newBoardState[row][i].color = "#538d4e"
 						setBoardState(newBoardState)
+						doubles[doubleArrayIndex].count -= 1
+					} else {
+						newBoardState[row][i].color = "#3a3a3c"
+						setBoardState(newBoardState)
 					}
+					// } else {
+					// 	newBoardState[row][i].color = "#538d4e"
+					// 	setBoardState(newBoardState)
+					// }
 				}
 
 			}
@@ -132,30 +157,30 @@ function App() {
 				const guessLetter = boardState[row][i].letter
 				const newBoardState = [...boardState]
 
-				let isDouble = false
+				// let isDouble = false
 				let doubleArrayIndex = 0
 				doubles.forEach((letterObj, index) => {
 					if (guessLetter === letterObj.letter) {
-						isDouble = true
+						// isDouble = true
 						doubleArrayIndex = index
 					}
 				})
 
 				if (!exclude.includes(i)) {
 					if (word.includes(guessLetter)) {
-						if (isDouble) {
-							if (doubles[doubleArrayIndex].count > 0) {
-								newBoardState[row][i].color = "#b59f3b"
-								setBoardState(newBoardState)
-								doubles[doubleArrayIndex].count -= 1
-							} else {
-								newBoardState[row][i].color = "#3a3a3c"
-								setBoardState(newBoardState)
-							}
-						} else {
+						// if (isDouble) {
+						if (doubles[doubleArrayIndex].count > 0) {
 							newBoardState[row][i].color = "#b59f3b"
 							setBoardState(newBoardState)
+							doubles[doubleArrayIndex].count -= 1
+						} else {
+							newBoardState[row][i].color = "#3a3a3c"
+							setBoardState(newBoardState)
 						}
+						// } else {
+						// 	newBoardState[row][i].color = "#b59f3b"
+						// 	setBoardState(newBoardState)
+						// }
 					} else {
 						newBoardState[row][i].color = "#3a3a3c"
 						setBoardState(newBoardState)
@@ -164,11 +189,13 @@ function App() {
 
 			}
 			if (exclude.length === 5) {
-				console.log("You Win")
+				setModalMessage("You Win")
 				setDisableKeyboard(true)
+				setDisplayModal("flex")
 			} else if (currentBeginning === 25) {
-				console.log("Better Luck Next Time")
+				setModalMessage("Better Luck Next Time")
 				setDisableKeyboard(true)
+				setDisplayModal("flex")
 			} else {
 				setCurrentBeginning(currentBeginning + 5)
 			}
@@ -178,8 +205,9 @@ function App() {
 
 	return (
 		<div className="App">
-			<Header />
+			<Header changeModal={changeModal} disableGraph={!disableKeyboard} />
 			<div className='game-area'>
+				<Modal word={word} modalMessage={modalMessage} displayModal={displayModal} changeModal={changeModal} />
 				<Board boardState={boardState} />
 				<Keyboard type={type} backspace={backspace} checkWord={checkWord} />
 			</div>
