@@ -4,6 +4,7 @@ import { FaBars } from 'react-icons/fa'
 import { AiFillQuestionCircle } from 'react-icons/ai'
 import { ImStatsBars } from 'react-icons/im'
 import { VscSettingsGear } from 'react-icons/vsc'
+import { MdReplayCircleFilled } from 'react-icons/md'
 
 const Header = ({ changeModal, disableGraph }) => {
     return (
@@ -25,7 +26,7 @@ const Header = ({ changeModal, disableGraph }) => {
                                 changeModal("flex")
                             }
                         }}>
-                        <ImStatsBars />
+                        <MdReplayCircleFilled />
                     </div>
                     <div className="button">
                         <VscSettingsGear />

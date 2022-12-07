@@ -1,6 +1,6 @@
 import './Modal.css'
 
-const Modal = ({ displayModal, changeModal, modalMessage, word }) => {
+const Modal = ({ displayModal, changeModal, modalMessage, word, playAgain }) => {
 
     return (
         <div className='modal' style={{ display: displayModal }}>
@@ -10,7 +10,7 @@ const Modal = ({ displayModal, changeModal, modalMessage, word }) => {
             <div className='word'>
                 {`The Word Was: ${word}`}
             </div>
-            <div className="play-agian-button">
+            <div className="play-agian-button" onClick={playAgain}>
                 Play Again
             </div>
             <div className="hide" onClick={() => { changeModal("none") }}>

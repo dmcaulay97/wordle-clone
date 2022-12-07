@@ -1,9 +1,9 @@
 import "./Key.css"
 
-const Key = ({ letter, type }) => {
+const Key = ({ letter, type, color }) => {
 
     return (
-        <div className="key" onClick={() => { type(letter) }}>
+        <div style={{ backgroundColor: color }} className="key" onClick={() => { type(letter) }}>
             {letter}
         </div>
     )
