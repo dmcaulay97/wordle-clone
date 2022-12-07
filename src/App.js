@@ -203,7 +203,7 @@ function App() {
 				guessWord += boardState[row][i].letter.toLocaleLowerCase()
 			}
 
-			if (allFiveLetterWords.includes(guessWord)) {
+			if (allFiveLetterWords.includes(guessWord) || fiveLetterWords.includes(guessWord)) {
 
 				for (let i = 0; i < 5; i++) {
 					const guessLetter = boardState[row][i].letter
