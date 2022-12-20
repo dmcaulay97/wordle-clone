@@ -6,7 +6,6 @@ import Modal from './components/modal/Modal';
 import allWords from 'an-array-of-english-words'
 import { words } from 'popular-english-words'
 import { useState, useEffect } from 'react'
-import { AiOutlineConsoleSql } from 'react-icons/ai';
 
 function App() {
 
